@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Azl Game's</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div class="screen active" id="screen-splash">
+    <div id="splash-logo">🧠 Azl Game's</div>
+    <p>Memuat...</p>
+  </div>
+  <div class="screen" id="screen-menu">
+    <h1>Azl Game's</h1>
+    <p>Uji logika brain-out kamu!</p>
+    <button class="btn-main" onclick="goPlay()">▶ Play</button>
+    <button class="btn-main btn-secondary" onclick="showScreen('screen-levels')">🔒 Pilih Level</button>
+    <button class="btn-main btn-secondary" onclick="showScreen('screen-settings')">⚙ Setting</button>
+    <button class="btn-main btn-secondary" onclick="showScreen('screen-about')">ℹ Tentang</button>
+    <div id="coin-badge" style="margin-top:10px;">🪙 <span id="menu-coins">0</span></div>
+  </div>
+  <div class="screen" id="screen-levels">
+    <h2>Pilih Level (1-50)</h2>
+    <div id="level-grid"></div>
+    <button class="btn-secondary" onclick="showScreen('screen-menu')">← Kembali</button>
+  </div>
+  <div class="screen" id="screen-settings">
+    <h2>Setting</h2>
+    <div class="toggle-row"><span>Suara</span><div class="switch" id="sound-switch" onclick="toggleSound()"></div></div>
+    <button class="btn-danger" onclick="resetProgress()">Reset Progress</button>
+    <button class="btn-secondary" style="margin-top:14px;" onclick="showScreen('screen-menu')">← Kembali</button>
+  </div>
+  <div class="screen" id="screen-about">
+    <h2>Tentang</h2>
+    <p><b>Nama:</b> Azril<br><b>Kelas:</b> XII TKJ<br><b>Tujuan:</b> Melatih logika berpikir out-of-the-box lewat game puzzle bergaya Brain Out, dibuat sebagai tugas praktek.</p>
+    <button class="btn-secondary" onclick="showScreen('screen-menu')">← Kembali</button>
+  </div>
+  <div class="screen" id="screen-game">
+    <div id="game-header">
+      <button class="btn-secondary" onclick="showScreen('screen-menu')">← Menu</button>
+      <div id="coin-badge">🪙 <span id="game-coins">0</span></div>
+    </div>
+    <div id="level-instruction">Soal</div>
+    <div id="level-content"></div>
+    <div id="hint-btn-wrap"><button class="btn-secondary" onclick="openHint()">💡 Hint</button></div>
+  </div>
+  <div class="modal hidden" id="win-modal">
+    <div class="modal-box">
+      <h2>🎉 Benar!</h2>
+      <div id="win-stars"></div>
+      <p>+<span id="win-coins">10</span> koin</p>
+      <button class="btn-green" onclick="goNextLevel()">Next Level ▶</button><br><br>
+      <button class="btn-secondary" onclick="showScreen('screen-menu')">Kembali ke Menu</button>
+    </div>
+  </div>
+  <div class="modal hidden" id="hint-modal">
+    <div class="modal-box">
+      <h2>Butuh Hint?</h2>
+      <p>Pilih salah satu cara di bawah:</p>
+      <button class="btn-secondary" onclick="watchAdForHint()">📺 Tonton Iklan (gratis)</button><br><br>
+      <button class="btn-secondary" onclick="payCoinForHint()">🪙 Bayar 10 Koin</button><br><br>
+      <button class="btn-danger" onclick="closeHint()">Batal</button>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

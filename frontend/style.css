@@ -1,0 +1,44 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+html, body { margin:0; padding:0; height:100%; font-family: 'Segoe UI', Arial, sans-serif; background:#FCE9C8; overflow:hidden; }
+#app { position:relative; width:100%; height:100vh; overflow:hidden; }
+.screen { position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center; padding:24px; text-align:center; }
+.screen.active { display:flex; }
+#screen-levels { overflow-y:auto; }
+h1 { font-size:2.2em; color:#4A1B0C; margin:0 0 8px; }
+h2 { font-size:1.4em; color:#4A1B0C; margin:0 0 16px; }
+p { color:#712B13; line-height:1.5; max-width:420px; }
+button { font-family:inherit; font-size:1em; border:none; border-radius:14px; padding:14px 22px; cursor:pointer; font-weight:bold; box-shadow:0 4px 0 rgba(0,0,0,0.15); transition:transform .1s; }
+button:active { transform:translateY(3px); box-shadow:0 1px 0 rgba(0,0,0,0.15); }
+.btn-main { background:#F0997B; color:#4A1B0C; width:240px; margin:8px auto; display:block; font-size:1.1em; }
+.btn-secondary { background:#F5C4B3; color:#4A1B0C; }
+.btn-danger { background:#F09595; color:#501313; }
+.btn-green { background:#97C459; color:#173404; }
+#splash-logo { font-size:3em; animation: pop 1s ease; }
+@keyframes pop { 0%{transform:scale(0);opacity:0;} 60%{transform:scale(1.15);opacity:1;} 100%{transform:scale(1);} }
+#level-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; max-width:420px; margin:16px 0; max-height:56vh; overflow-y:auto; padding:4px; }
+.level-cell { aspect-ratio:1; background:#F5C4B3; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-direction:column; font-weight:bold; color:#712B13; cursor:pointer; position:relative; }
+.level-cell.locked { background:#D3D1C7; color:#5F5E5A; cursor:not-allowed; }
+.level-cell .stars { font-size:0.6em; margin-top:2px; }
+#coin-badge { background:#FAC775; color:#412402; padding:6px 14px; border-radius:20px; font-weight:bold; }
+#game-header { position:absolute; top:10px; left:10px; right:10px; display:flex; justify-content:space-between; align-items:center; }
+#level-instruction { --accent:#D85A30; background:linear-gradient(135deg,#fff,#FFF7ED); border:none; border-left:6px solid var(--accent); box-shadow:0 6px 18px rgba(0,0,0,0.12); border-radius:14px; padding:0; margin-top:60px; max-width:92%; cursor:grab; touch-action:none; position:relative; z-index:5; overflow:hidden; }
+.soal-badge { display:inline-block; font-size:0.75em; font-weight:bold; color:#fff; padding:5px 12px; border-radius:0 0 10px 0; }
+.soal-text { padding:12px 16px 16px; font-size:1.05em; color:#4A1B0C; font-weight:600; line-height:1.4; }
+.soal-pop { animation: soalPop .35s ease; }
+@keyframes soalPop { 0%{ transform:scale(0.9) translateY(-6px); opacity:0; } 100%{ transform:scale(1) translateY(0); opacity:1; } }
+#level-content { position:relative; flex:1; width:100%; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:16px; margin-top:20px; }
+#hint-btn-wrap { position:absolute; bottom:16px; right:16px; }
+.shake-anim { animation: shake .4s; }
+@keyframes shake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-10px);} 40%{transform:translateX(10px);} 60%{transform:translateX(-8px);} 80%{transform:translateX(8px);} }
+.modal { position:absolute; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:50; }
+.modal.hidden { display:none; }
+.modal-box { background:#fff; border-radius:18px; padding:26px; max-width:320px; text-align:center; }
+.fruit { font-size:2.6em; cursor:pointer; display:flex; flex-direction:column; align-items:center; }
+.fruit span { font-size:0.35em; background:#eee; border-radius:8px; padding:2px 8px; margin-top:4px; color:#333; }
+.ant-box { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.toggle-row { display:flex; align-items:center; justify-content:space-between; width:220px; margin:10px 0; }
+.switch { position:relative; width:50px; height:26px; background:#D3D1C7; border-radius:13px; cursor:pointer; }
+.switch.on { background:#639922; }
+.switch::after { content:''; position:absolute; top:3px; left:3px; width:20px; height:20px; background:#fff; border-radius:50%; transition:left .2s; }
+.switch.on::after { left:27px; }
+.win-star { font-size:1.6em; }
